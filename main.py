@@ -6,7 +6,7 @@ is_race_on=False
 
 screen = Screen()
 screen.setup(width=600, height=600)
-user_bet = screen.textinput(title="Hello", prompt="Color please:")
+user_bet = screen.textinput(title="Виберіть колір", prompt="red, orange, yellow, green, blue, purple")
 colors = ["red", "orange", "yellow", "green", "blue", "purple"]
 y_pos = [-70, -40, -10, 20, 50, 80]
 all_turtles = []
@@ -25,12 +25,13 @@ while is_race_on:
     for tim in all_turtles:
         if tim.xcor() > 220:
             color_win = tim.pencolor()
-            if color_win == user_bet:
-                screen.textinput(title="You Win", prompt="Lets one more time?")
-                return
+            if color_win[0] == user_bet[0]:
+                screen.textinput(title=f"You Win {color_win[0]} VS {user_bet[0]}", prompt="Lets one more time?")
+                is_race_on = False
             else:
-                screen.textinput(title="Looooooser", prompt="Lets one more time?")
-                return
+                screen.textinput(title=f"Looooooser {color_win[0]} VS {user_bet[0]}", prompt="Lets one more time?")
+                is_race_on = False
+
 
 
         rand_distance = random.randint(0, 15)
