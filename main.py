@@ -27,6 +27,11 @@ while is_race_on:
             color_win = tim.pencolor()
             if color_win == user_bet:
                 screen.textinput(title="You Win", prompt="Lets one more time?")
+                return
+            else:
+                screen.textinput(title="Looooooser", prompt="Lets one more time?")
+                return
+
 
         rand_distance = random.randint(0, 15)
         tim.forward(rand_distance)
